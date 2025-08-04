@@ -116,7 +116,7 @@ set PATH=%JAVA_HOME%\bin;%PATH%
 ```
 
 ---
-### 5. 🖥 Self-hosted Runner Required
+### 4. 🖥 Self-hosted Runner Required
 
 GitHub-hosted runners **cannot execute real LC3 scripts**, because:
 
