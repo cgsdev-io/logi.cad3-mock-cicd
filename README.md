@@ -50,7 +50,7 @@ Uses:
 - `scripts/build_simulate.bat`
 - `scripts/test_simulate.bat`
 - `scripts/shutdown_simulate.bat`
-- `.github/workflows/ci_simulate.yaml`
+- `.github/workflows/ci_simulate.yml`
 
 
 ---
