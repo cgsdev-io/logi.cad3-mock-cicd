@@ -70,6 +70,50 @@ To use this:
 - Ensure binaries like `logiCAD3.exe`, `eclipseC.exe`, and `com.logicals.lc3.command.jar` are in PATH
 - A valid license server or local license must be active
 
+## ⚙️ Configuration Notes for Real LC3 CI
+
+To successfully run the `*_real.bat` scripts in your local or CI environment, ensure the following conditions are met:
+
+### 1. ✅ Install logi.CAD 3
+
+Install logi.CAD 3 (version 3.20.0 or compatible) and verify the following executables exist:
+
+- `logiCAD3.exe`
+- `eclipseC.exe`
+- `com.logicals.lc3.command.jar`
+
+> ℹ️ These are usually located under:  
+> `C:\Program Files\logi.cals.LC3_03XXXX\`
+
+---
+
+### 2. 🔧 Update Paths in `.bat` Scripts
+
+If the installation path or project structure is different in your system:
+
+- Edit the following lines in `build_real.bat`, `test_real.bat`, and `shutdown_real.bat`:
+
+```bat
+set PROJECTPATH=...
+set WORKSPACE=...
+set LOGCONFIG=...
+```
+
+- Also update the path to `com.logicals.lc3.command.jar` in `shutdown_real.bat` if it's different.
+
+---
+
+### 3. 🛣 Add to PATH and Set JAVA_HOME (if needed)
+
+Make sure the following are accessible:
+
+- Add logi.CAD 3 installation folder to your system `PATH`
+- Ensure `JAVA_HOME` is set properly and Java 8+ is installed
+
+```bat
+set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_202
+set PATH=%JAVA_HOME%\bin;%PATH%
+```
 
 ---
 
