@@ -1,0 +1,21 @@
+name: logiCAD3 Real CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  real-ci:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Real Build
+      run: scripts/build_real.bat
+
+    - name: Real Test
+      run: scripts/test_real.bat
+
+    - name: Real Shutdown
+      run: scripts/shutdown_real.bat
