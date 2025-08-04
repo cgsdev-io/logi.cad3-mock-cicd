@@ -2,7 +2,7 @@
 # GitHub Actions Workflow (ci.yml)
 # Simulates logi.CAD 3 CI/CD pipeline with realistic CLI structure based on LC3 v3.20.0
 
-name: Build & Test logiCAD3 Mock CI
+name: logiCAD3 Simulated CI
 
 description: |
   CI pipeline that simulates logi.CAD 3 automation based on
