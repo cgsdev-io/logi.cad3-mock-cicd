@@ -1,0 +1,3 @@
+[submodule "vendor/lc3_examples"]
+	path = vendor/lc3_examples
+	url = https://github.com/logicals-gmbh/com.logicals.lc3.examples.git
