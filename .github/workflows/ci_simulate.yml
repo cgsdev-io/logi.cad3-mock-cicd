@@ -1,0 +1,32 @@
+---
+# GitHub Actions Workflow (ci.yml)
+# Simulates logi.CAD 3 CI/CD pipeline with realistic CLI structure based on LC3 v3.20.0
+
+name: Build & Test logiCAD3 Mock CI
+
+description: |
+  CI pipeline that simulates logi.CAD 3 automation based on
+  the "com.logicals.lc3.examples" public GitHub repository by logicals-gmbh.
+  This uses a real example project (e.g. BasicProject) as basis for simulation.
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Simulate logiCAD3 Build
+      run: scripts/build_simulate.bat
+
+    - name: Simulate logiCAD3 Test Run
+      run: scripts/test_simulate.bat
+
+    - name: Simulate logiCAD3 Shutdown
+      run: scripts/shutdown_simulate.bat
