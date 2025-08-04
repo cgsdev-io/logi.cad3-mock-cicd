@@ -1,5 +1,10 @@
 name: logiCAD3 Real CI
 
+description: |
+  CI pipeline that runs logi.CAD 3 automation based on
+  the "com.logicals.lc3.examples" public GitHub repository by logicals-gmbh.
+  This uses a real example project (e.g. BasicProject) as basis.
+
 on:
   workflow_dispatch:
 
