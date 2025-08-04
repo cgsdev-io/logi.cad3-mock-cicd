@@ -116,6 +116,26 @@ set PATH=%JAVA_HOME%\bin;%PATH%
 ```
 
 ---
+### 5. 🖥 Self-hosted Runner Required
+
+GitHub-hosted runners **cannot execute real LC3 scripts**, because:
+
+- logi.CAD 3 requires local installation and license activation  
+- GUI-based and registry-dependent components are involved  
+- License servers (e.g., FLEXnet) must be accessible
+
+To run `*_real.bat` in CI:
+
+- Set up a **self-hosted Windows runner** on a machine where logi.CAD 3 is already installed and licensed
+- Follow GitHub's guide: [Adding self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners)
+- Make sure all tools (`logiCAD3.exe`, `eclipseC.exe`, etc.) are accessible via `%PATH%`
+
+> 💡 Use the label `self-hosted` in your workflow:
+> 
+> ```yaml
+> runs-on: [self-hosted, windows]
+> ```
+---
 
 ## 📜 License
 
