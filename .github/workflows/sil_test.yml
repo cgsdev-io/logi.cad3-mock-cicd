@@ -1,0 +1,24 @@
+name: SiL Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        required: true
+        type: string
+      test_suite:
+        required: true
+        type: string
+      output_path:
+        required: true
+        type: string
+      output_file:
+        required: true
+        type: string
+
+jobs:
+  sil-test:
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3
+    - run: scripts\sil_test.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.test_suite }}" "${{ github.event.inputs.output_path }}" "${{ github.event.inputs.output_file }}"

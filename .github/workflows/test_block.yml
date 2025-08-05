@@ -1,0 +1,21 @@
+name: Test Library Block
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        required: true
+        type: string
+      library_definition_name:
+        required: true
+        type: string
+      block_name:
+        required: true
+        type: string
+
+jobs:
+  test-block:
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3
+    - run: scripts\test_block.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.library_definition_name }}" "${{ github.event.inputs.block_name }}"

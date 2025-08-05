@@ -1,0 +1,32 @@
+name: Rule Check LC3 Project
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: 'Name of the LC3 project workspace folder'
+        required: true
+        type: string
+      object_to_validate:
+        description: 'PLC object, POU, or folder to validate (e.g., local.iecplc)'
+        required: true
+        type: string
+      report_path:
+        description: 'Directory to store the rule check report'
+        required: true
+        type: string
+      report_file:
+        description: 'Name of the rule check report file (e.g., report01.mrclog)'
+        required: true
+        type: string
+
+jobs:
+  rule-check-project:
+    runs-on: [self-hosted, windows]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Run rulecheck_project.bat
+      run: scripts\rulecheck_project.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.object_to_validate }}" "${{ github.event.inputs.report_path }}" "${{ github.event.inputs.report_file }}"

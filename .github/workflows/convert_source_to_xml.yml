@@ -1,0 +1,21 @@
+name: Convert Source to XML
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        required: true
+        type: string
+      source_file:
+        required: true
+        type: string
+      reference_files:
+        required: false
+        type: string
+
+jobs:
+  convert-source-to-xmi:
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3
+    - run: scripts\convert_source_to_xmi.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.reference_files }}"

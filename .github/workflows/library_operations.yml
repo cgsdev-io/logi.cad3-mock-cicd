@@ -1,0 +1,41 @@
+name: Library Operations (Build/Deploy/Verify)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: 'Name of the LC3 project workspace folder'
+        required: true
+        type: string
+      library_definition_name:
+        description: '.lc3lib file name (case-sensitive)'
+        required: true
+        type: string
+      library_name_version:
+        description: 'Optional: Name__Version for build/deploy (e.g., MyLib__1.0.0)'
+        required: false
+        type: string
+      lib_deploy_to:
+        description: 'Optional: Deployment target folder'
+        required: false
+        type: string
+      full_library_name:
+        description: 'Optional: Full path to library ZIP for verification'
+        required: false
+        type: string
+      enable_lib_check:
+        description: 'Optional: Set to "true" to perform library verification'
+        required: false
+        type: string
+
+jobs:
+  library-operations:
+    runs-on: [self-hosted, windows]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Run library_operations.bat
+      run: |
+        scripts\library_operations.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.library_definition_name }}" "${{ github.event.inputs.library_name_version }}" "${{ github.event.inputs.lib_deploy_to }}" "${{ github.event.inputs.full_library_name }}" "${{ github.event.inputs.enable_lib_check }}"

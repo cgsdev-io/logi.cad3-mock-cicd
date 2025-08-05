@@ -1,0 +1,20 @@
+name: Create or Modify LC3 Project
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: 'Name of the LC3 project to create or modify'
+        required: true
+        type: string
+
+jobs:
+  create-or-modify-project:
+    runs-on: [self-hosted, windows]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Run create_or_modify_project.bat
+      run: scripts\create_or_modify_project.bat "${{ github.event.inputs.project_name }}"

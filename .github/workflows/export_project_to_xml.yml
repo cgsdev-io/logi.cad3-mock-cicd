@@ -1,0 +1,24 @@
+name: Export Project to XML
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        required: true
+        type: string
+      object_to_export:
+        required: false
+        type: string
+      output_path:
+        required: false
+        type: string
+      output_file:
+        required: false
+        type: string
+
+jobs:
+  export-project-to-xml:
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3
+    - run: scripts\export_project_to_xml.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.object_to_export }}" "${{ github.event.inputs.output_path }}" "${{ github.event.inputs.output_file }}"

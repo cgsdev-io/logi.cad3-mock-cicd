@@ -1,0 +1,24 @@
+name: Import Objects from XML
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        required: true
+        type: string
+      input_folder:
+        required: false
+        type: string
+      input_file:
+        required: false
+        type: string
+      import_folder:
+        required: false
+        type: string
+
+jobs:
+  import-objects-from-xml:
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3
+    - run: scripts\import_objects_from_xml.bat "${{ github.event.inputs.project_name }}" "${{ github.event.inputs.input_folder }}" "${{ github.event.inputs.input_file }}" "${{ github.event.inputs.import_folder }}"
